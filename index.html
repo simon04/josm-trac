@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JOSM Trac Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      function submitSearchOpen(form) {
+        ['summary', 'description', 'keywords', 'component'].map(function (k) {
+          if (form[k].value.match(/^[^~]/)) {
+            // prepend tilde for 'contains' search
+            form[k].value = '~' + form[k].value;
+          } else if (!form[k].value) {
+            // remove name to drop GET parameter
+            form[k].name = '';
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>JOSM Trac search</h1>
+    A quick access to frequently used <a href="https://josm.openstreetmap.de/">JOSM Trac</a> searches.
+    <form name="search-open" action="https://josm.openstreetmap.de/query" onsubmit="submitSearchOpen(this)">
+      <h2>Search open tickets</h2>
+      <input name="summary" placeholder="Summary: foo">
+      <input name="description" placeholder="Description: foo">
+      <input name="keywords" placeholder="Keywords: foo">
+      <input name="component" placeholder="Component: Core/Plugin">
+      <input name="status" value="!closed" type="hidden">
+      <input name="col" value="id" type="hidden">
+      <input name="col" value="summary" type="hidden">
+      <input name="col" value="owner" type="hidden">
+      <input name="col" value="type" type="hidden">
+      <input name="col" value="component" type="hidden">
+      <input name="col" value="changetime" type="hidden">
+      <input name="col" value="keywords" type="hidden">
+      <input type="submit">
+    </form>
+    <form name="by-milestone" action="https://josm.openstreetmap.de/query">
+      <h2>By milestone</h2>
+      <input name="milestone" placeholder="Milestone: 16.04">
+      <input name="status" value="!closed" type="hidden">
+      <input name="group" value="component" type="hidden">
+      <input type="submit">
+    </form>
+  </body>
+</html>
