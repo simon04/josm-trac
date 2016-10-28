@@ -38,6 +38,21 @@
       <input name="col" value="keywords" type="hidden">
       <input type="submit">
     </form>
+    <form name="search-open-or-closed" action="https://josm.openstreetmap.de/query" onsubmit="submitSearchOpen(this)">
+      <h2>Search open/closed tickets</h2>
+      <input name="summary" placeholder="Summary: foo">
+      <input name="description" placeholder="Description: foo">
+      <input name="keywords" placeholder="Keywords: foo">
+      <input name="component" placeholder="Component: Core/Plugin">
+      <input name="col" value="id" type="hidden">
+      <input name="col" value="summary" type="hidden">
+      <input name="col" value="owner" type="hidden">
+      <input name="col" value="type" type="hidden">
+      <input name="col" value="component" type="hidden">
+      <input name="col" value="changetime" type="hidden">
+      <input name="col" value="keywords" type="hidden">
+      <input type="submit">
+    </form>
     <form name="by-milestone" action="https://josm.openstreetmap.de/query">
       <h2>By milestone</h2>
       <input name="milestone" placeholder="Milestone: 16.04">
